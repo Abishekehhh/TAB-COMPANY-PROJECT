@@ -2,16 +2,44 @@ import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const Index = lazy(() => import("./pages/Index"));
-const AboutPage = lazy(() => import("./pages/AboutPage"));
-const ServicesPage = lazy(() => import("./pages/ServicesPage"));
-const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
-const ContactPage = lazy(() => import("./pages/ContactPage"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const loadIndex = () => import("./pages/Index");
+const loadAboutPage = () => import("./pages/AboutPage");
+const loadServicesPage = () => import("./pages/ServicesPage");
+const loadProjectsPage = () => import("./pages/ProjectsPage");
+const loadContactPage = () => import("./pages/ContactPage");
+const loadNotFound = () => import("./pages/NotFound");
+
+const Index = lazy(loadIndex);
+const AboutPage = lazy(loadAboutPage);
+const ServicesPage = lazy(loadServicesPage);
+const ProjectsPage = lazy(loadProjectsPage);
+const ContactPage = lazy(loadContactPage);
+const NotFound = lazy(loadNotFound);
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
+
+const RouteWarmup = () => {
+  useEffect(() => {
+    const warmRoutes = () => {
+      void loadAboutPage();
+      void loadServicesPage();
+      void loadProjectsPage();
+      void loadContactPage();
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(warmRoutes, { timeout: 1500 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(warmRoutes, 1200);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return null;
 };
 
@@ -27,6 +55,7 @@ const RouteFallback = () => (
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
+    <RouteWarmup />
     <Suspense fallback={<RouteFallback />}>
       <Routes>
         <Route path="/" element={<Index />} />

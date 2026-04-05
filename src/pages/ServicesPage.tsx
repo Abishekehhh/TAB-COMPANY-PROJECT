@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
 
 import anemometer from "@/assets/anemometer.jpg";
@@ -56,6 +57,12 @@ const services = [
 
 const ServicesPage = () => (
   <Layout>
+    <Seo
+      title="Services"
+      description="Explore TAB Technical Services for HVAC startup, testing and commissioning, airflow, noise, temperature, humidity, vibration, and chilled water flushing."
+      path="/services"
+      keywords="HVAC services Chennai, testing and commissioning, airflow measurement, vibration measurement, temperature measurement, chilled water flushing"
+    />
     <section className="bg-primary text-primary-foreground py-20">
       <div className="container mx-auto px-4 text-center">
         <AnimatedSection>

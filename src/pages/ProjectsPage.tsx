@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import Seo from "@/components/Seo";
 
 const projects = [
   { name: "NIT – Trichy", location: "Tamil Nadu", category: "Education" },
@@ -20,6 +21,12 @@ const categories = [...new Set(projects.map((p) => p.category))];
 
 const ProjectsPage = () => (
   <Layout>
+    <Seo
+      title="Projects"
+      description="View TAB Technical Services project experience across hospitals, airports, commercial buildings, IT parks, and industrial facilities in South India."
+      path="/projects"
+      keywords="HVAC projects India, hospital TAB projects, airport commissioning, commercial HVAC balancing, TAB portfolio"
+    />
     <section className="bg-primary text-primary-foreground py-20">
       <div className="container mx-auto px-4 text-center">
         <AnimatedSection>

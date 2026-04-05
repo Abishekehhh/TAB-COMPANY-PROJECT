@@ -10,18 +10,18 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   server: {
     host: "0.0.0.0",
-    port: 8082,
-    strictPort: false,
-    allowedHosts: ["tg19ptmr-8082.inc1.devtunnels.ms"],
+    port: 8083,
+    strictPort: true,
+    allowedHosts: [".devtunnels.ms"],
     hmr: {
       overlay: false,
     },
   },
   preview: {
     host: "0.0.0.0",
-    port: 8082,
-    strictPort: false,
-    allowedHosts: ["tg19ptmr-8082.inc1.devtunnels.ms"],
+    port: 8083,
+    strictPort: true,
+    allowedHosts: [".devtunnels.ms"],
   },
   plugins: [react()],
   resolve: {

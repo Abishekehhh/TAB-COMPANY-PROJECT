@@ -1,9 +1,16 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import Seo from "@/components/Seo";
 import { MessageCircle, Phone, Mail, Globe, MapPin } from "lucide-react";
 
 const ContactPage = () => (
   <Layout>
+    <Seo
+      title="Contact"
+      description="Contact TAB Technical Services in Chennai and Kerala for HVAC testing, adjusting, balancing, and commissioning support."
+      path="/contact"
+      keywords="Contact TAB Technical Services, HVAC company Chennai phone number, commissioning support Kerala"
+    />
     <section className="bg-primary text-primary-foreground py-20">
       <div className="container mx-auto px-4 text-center">
         <AnimatedSection>

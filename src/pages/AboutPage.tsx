@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import Seo from "@/components/Seo";
 import tabIcons from "@/assets/tab-icons.png";
 import siteActivities from "@/assets/site-activities.jpg";
 import siteActivitiesMobile from "@/assets/site-activities-mobile.jpg";
@@ -7,6 +8,12 @@ import { MapPin, Users, Award, Target, CheckCircle } from "lucide-react";
 
 const AboutPage = () => (
   <Layout>
+    <Seo
+      title="About"
+      description="Learn about TAB Technical Services, our HVAC testing and commissioning experience, offices in Chennai and Kerala, and our project-focused engineering team."
+      path="/about"
+      keywords="About TAB Technical Services, HVAC engineers Chennai, HVAC commissioning team Kerala, TAB company profile"
+    />
     {/* Hero Banner */}
     <section className="bg-primary text-primary-foreground py-20">
       <div className="container mx-auto px-4 text-center">

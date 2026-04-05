@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import Hero from "@/components/Hero";
 import Layout from "@/components/Layout";
+import Seo from "@/components/Seo";
 
 const AboutPreview = lazy(() => import("@/components/AboutPreview"));
 const ServicesPreview = lazy(() => import("@/components/ServicesPreview"));
@@ -19,19 +20,63 @@ const SectionFallback = () => (
   </div>
 );
 
-const Index = () => (
-  <Layout>
-    <Hero />
-    <Suspense fallback={<SectionFallback />}>
-      <AboutPreview />
-    </Suspense>
-    <Suspense fallback={<SectionFallback />}>
-      <ServicesPreview />
-    </Suspense>
-    <Suspense fallback={<SectionFallback />}>
-      <Projects />
-    </Suspense>
-  </Layout>
-);
+const Index = () => {
+  const siteUrl = "https://www.tabtechnicalservices.com";
+
+  return (
+    <Layout>
+      <Seo
+        title="TAB TECHNICAL SERVICE"
+        description="TAB Technical Services delivers HVAC testing, adjusting, balancing, commissioning, airflow, noise, temperature, and flushing support for commercial projects across Chennai and Kerala."
+        path="/"
+        keywords="HVAC testing Chennai, TAB services Kerala, air balancing, commissioning, airflow measurement, chilled water flushing, HVAC validation"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "TAB Technical Services",
+            url: `${siteUrl}/`,
+            image: `${siteUrl}/image/favicon.ico`,
+            telephone: "+91 6380513174",
+            email: "tabtechnicalservice@gmail.com",
+            areaServed: ["Chennai", "Kerala", "Tamil Nadu"],
+            address: [
+              {
+                "@type": "PostalAddress",
+                streetAddress: "Nandampakkam, Kundrathur",
+                addressLocality: "Chennai",
+                postalCode: "600069",
+                addressCountry: "IN",
+              },
+              {
+                "@type": "PostalAddress",
+                streetAddress: "Udhayanapuram, Vaikom",
+                addressLocality: "Kottayam",
+                postalCode: "686146",
+                addressCountry: "IN",
+              },
+            ],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "TAB Technical Services",
+            url: `${siteUrl}/`,
+          },
+        ]}
+      />
+      <Hero />
+      <Suspense fallback={<SectionFallback />}>
+        <AboutPreview />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <ServicesPreview />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Projects />
+      </Suspense>
+    </Layout>
+  );
+};
 
 export default Index;
