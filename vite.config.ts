@@ -11,7 +11,7 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 8082,
-    strictPort: true,
+    strictPort: false,
     allowedHosts: ["tg19ptmr-8082.inc1.devtunnels.ms"],
     hmr: {
       overlay: false,
@@ -20,7 +20,7 @@ export default defineConfig({
   preview: {
     host: "0.0.0.0",
     port: 8082,
-    strictPort: true,
+    strictPort: false,
     allowedHosts: ["tg19ptmr-8082.inc1.devtunnels.ms"],
   },
   plugins: [react()],
