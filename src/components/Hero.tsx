@@ -6,7 +6,7 @@ import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 const highlights = [
   "Air balancing and airflow testing",
   "Calibrated instruments and clear reporting",
-  "Fast support for commercial project teams",
+  "Fast support for commercial pro teams",
 ];
 
 const Hero = () => {
