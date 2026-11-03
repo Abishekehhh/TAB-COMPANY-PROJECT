@@ -26,15 +26,12 @@ const WhatsAppPopup: React.FC<Props> = ({ trigger }) => {
     }
   }, []);
 
-  const handleSend = () => {
-    const text = `Hello, my name is ${name || ""}. Phone: ${phone || ""}. ${message || ""}`;
-    const wa = `https://wa.me/${COMPANY_PHONE.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(text)}`;
-    window.open(wa, "_blank");
-  };
+  const text = `Hello, my name is ${name || ""}. Phone: ${phone || ""}. ${message || ""}`;
+  const waUrl = `https://wa.me/${COMPANY_PHONE.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(text)}`;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>{trigger ?? (
+      <DialogTrigger asChild>{trigger ?? (
         <button className="hidden md:flex items-center gap-2 text-sm font-medium bg-accent text-accent-foreground px-4 py-2 rounded-md hover:opacity-90 transition-opacity">
           WhatsApp
         </button>
@@ -64,7 +61,15 @@ const WhatsAppPopup: React.FC<Props> = ({ trigger }) => {
         </div>
 
         <DialogFooter>
-          <button onClick={handleSend} className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold">Send on WhatsApp</button>
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="inline-block text-center bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold"
+          >
+            Send on WhatsApp
+          </a>
         </DialogFooter>
       </DialogContent>
     </Dialog>

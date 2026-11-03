@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$connections = Get-NetTCPConnection -LocalPort 8083 -ErrorAction SilentlyContinue | Where-Object { $_.State -eq 'Listen' }; if ($connections) { $connections | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue } }; exit 0\"",
     "dev": "vite",
     "dev:open": "vite --open",
     "build": "vite build",
@@ -12,7 +11,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "preview:tunnel": "vite preview --host 0.0.0.0 --port 8083 --strictPort",
+    "preview:tunnel": "vite preview --host 0.0.0.0 --port 3000 --strictPort",
     "test": "vitest run",
     "test:watch": "vitest"
   },

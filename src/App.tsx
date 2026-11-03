@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Chatbot from "@/components/Chatbot/Chatbot";
 
 const loadIndex = () => import("./pages/Index");
 const loadAboutPage = () => import("./pages/AboutPage");
@@ -66,6 +67,7 @@ const App = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+    <Chatbot />
   </BrowserRouter>
 );
 

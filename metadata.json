@@ -1,0 +1,6 @@
+{
+  "name": "TAB Technical Services",
+  "description": "Independent HVAC Testing, Adjusting & Balancing agency in Chennai and Kerala with commissioning, airflow, temperature, and project support.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
